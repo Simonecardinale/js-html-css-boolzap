@@ -64,7 +64,8 @@ body {
 }
 
 .message_notify_container {
-    padding: 20px;
+    padding: 0 20px;
+    height: 70px;
     background-color: #8edafc;
     display: flex;
     align-items: center;
@@ -107,16 +108,25 @@ label {
     padding: 0 20px;
 }
 
-.avatar_container {
-    border: 2px solid black;
+.avatar_container  {
+    height: calc(100% - 210px);
+    overflow-y: scroll;
 }
+
 
 .avatar_list {
     list-style: none;
 }
 
+.avatar_list li {
+    display: flex;
+    padding: 20px 0;
+    background-color: #eaeaea;
+}
+
 .avatar {
     height: 40px;
+    padding: 0 15px;
 }
 
 /* /left container */
