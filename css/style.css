@@ -26,3 +26,52 @@ body {
 }
 
 /* /container chat */
+
+/* left container */
+
+.container_left {
+    height: 100%;
+    width: 40%;
+    border: 1px solid red;
+    float: left;
+}
+
+.header_left {
+    height: 70px;
+    width: 100%;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_id {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.avatar_id {
+    height: 50px;
+}
+.container_icons {
+    margin: 0 10px;
+}
+
+.container_icons i {
+    padding: 0 5px;
+    color: grey;
+    font-size: 20px;
+}
+
+/* /left container */
+
+/* right container */
+
+.container_right {
+    height: 100%;
+    width: 60%;
+    border: 1px solid blue;
+    float: left;
+}
+
+/* /right container */
