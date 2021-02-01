@@ -153,6 +153,8 @@ label {
 .chatbox {
     height: calc(100% - 70px - 50px);
     overflow-y: scroll;
+    background-image: url("https://cdn.pixabay.com/photo/2016/01/22/18/59/background-1156435__340.png");
+    background-size: cover;
 }
 
 .chatbar_container {
