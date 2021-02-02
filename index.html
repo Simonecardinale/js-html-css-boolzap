@@ -51,7 +51,7 @@
 
             <div class="avatar_container">
                 <ul class="avatar_list">
-                    <li v-for="val in avatarArray" :key="val.nome" :key="val.immagine">  
+                    <li v-for="(val, index) in avatarArray" :key="val.nome" :key="val.immagine" @click="statusChange(index)">  
                         <img class="avatar" :src= "val.immagine" alt="">
                         {{val.nome}}
                     </li>
@@ -64,10 +64,10 @@
         <!-- right container -->
         <div class="container_right">
             <div class="header_right">
-                <div class="container_id">
-                    <img class="avatar_id" src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" alt="">
+                <div class="container_id" v-for="(val, index) in avatarArray" :key="val.status" v-if="val.status == true">
+                    <img class="avatar_id" :src="val.immagine" alt="">
                     <div class="contact_container">
-                        <p>Michele</p>
+                        <p>{{val.nome}}</p>
                         <p class="access">Ultimo accesso oggi alle</p>
                     </div>
                 </div>
