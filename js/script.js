@@ -22,15 +22,25 @@ var app = new Vue ({
                 immagine: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png",
                 status: false,
             },
-            
-        ]
+        ],
+        selected: [
+            {
+            nome: 'Michele',
+            immagine: 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
+            status: true,
+            }
+        ],
     },
 
     methods: {
         statusChange(index) {
             this.avatarArray[index].status = true;
+            this.selected.push(this.avatarArray[index]),
+            this.selected.splice(0, 2, this.avatarArray[index])
             console.log(this.avatarArray[0].status);
-            console.log(this.avatarArray[1].status);
-        }
+            this.selected.forEach((element)=> {
+                console.log(element);
+            });
+        },
     }
 });

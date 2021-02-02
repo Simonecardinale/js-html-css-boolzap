@@ -64,7 +64,7 @@
         <!-- right container -->
         <div class="container_right">
             <div class="header_right">
-                <div class="container_id" v-for="(val, index) in avatarArray" :key="val.status" v-if="val.status == true">
+                <div class="container_id" v-for="(val, index) in selected" :key="val.status" v-if="val.status == true">
                     <img class="avatar_id" :src="val.immagine" alt="">
                     <div class="contact_container">
                         <p>{{val.nome}}</p>
@@ -81,11 +81,11 @@
                 
             <!-- messages -->
 
-            <div class="send">
+            <div class="message sent">
                 <p>Ciao a tutti</p>
                 <p class="time_chat">Inviato alle</p>
             </div>
-            <div class="received">
+            <div class="message received">
                 <p>Ciao a te!</p>
                 <p class="time_chat">Inviato alle</p>
             </div>
