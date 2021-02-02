@@ -37,10 +37,6 @@ var app = new Vue ({
             this.avatarArray[index].status = true;
             this.selected.push(this.avatarArray[index]),
             this.selected.splice(0, 2, this.avatarArray[index])
-            console.log(this.avatarArray[0].status);
-            this.selected.forEach((element)=> {
-                console.log(element);
-            });
         },
     }
 });
