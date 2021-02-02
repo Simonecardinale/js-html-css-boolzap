@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 
     <title>Boolzap</title>
 </head>
@@ -13,7 +16,7 @@
 
     <!-- container chat -->
     
-    <div class="container">
+    <div id="app" class="container">
         <!-- left container -->
         <div class="container_left">
             <!-- header left -->
@@ -48,21 +51,9 @@
 
             <div class="avatar_container">
                 <ul class="avatar_list">
-                    <li>
-                        <img class="avatar" src="https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png" alt="">
-                        <p><strong>Michele</strong></p>
-                    </li>
-                    <li>
-                        <img class="avatar" src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807__340.png" alt="">
-                        <p><strong>Federica</strong></p>
-                    </li>
-                    <li>
-                        <img class="avatar" src="https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331__340.png" alt="">
-                        <p><strong>Nino</strong></p>
-                    </li>
-                    <li>
-                        <img class="avatar" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png" alt="">
-                        <p><strong>Peppe</strong></p>
+                    <li v-for="val in avatarArray" :key="val.nome" :key="val.immagine">  
+                        <img class="avatar" :src= "val.immagine" alt="">
+                        {{val.nome}}
                     </li>
                 </ul>
             </div>
@@ -113,5 +104,13 @@
     </div>
 
     <!-- /container chat -->
+
+
+
+
+
+
+
+    <script src="js/script.js"></script>
 </body>
 </html>
