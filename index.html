@@ -80,15 +80,19 @@
             <div class="chatbox">
                 
             <!-- messages -->
+            <div v-for="name in selected" :key="name.status" v-if="name.status == true">
+                <div v-for="val in name.message">
+                    <div :key="val.message_sent" key="val.sent" :key="val.received" class="message" :class="val.sent">
+                        <p>{{val.message_sent}}</p>
+                        <p class="time_chat">Inviato alle</p>
+                    </div>
+                    <div :key="val.message_received" :key="val.received" :class="val.received" class="message">
+                        <p>{{val.message_received}}</p>
+                        <p class="time_chat">Inviato alle</p>
+                    </div>
+                </div>
+            </div>
 
-            <div class="message sent">
-                <p>Ciao a tutti</p>
-                <p class="time_chat">Inviato alle</p>
-            </div>
-            <div class="message received">
-                <p>Ciao a te!</p>
-                <p class="time_chat">Inviato alle</p>
-            </div>
 
 
             <!-- /messages -->
