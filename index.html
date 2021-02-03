@@ -82,7 +82,7 @@
             <!-- messages -->
             <div v-for="name in selected" :key="name.status" v-if="name.status == true">
                 <div v-for="val in name.message">
-                    <div :key="val.message_sent" key="val.sent" :key="val.received" class="message" :class="val.sent">
+                    <div :key="val.message_sent" key="val.sent" class="message" :class="val.sent" v-if="val.message_sent.length > 0">
                         <p>{{val.message_sent}}</p>
                         <p class="time_chat">Inviato alle</p>
                     </div>
