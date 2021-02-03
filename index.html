@@ -21,9 +21,9 @@
         <div class="container_left">
             <!-- header left -->
             <div class="header_left">
-                <div class="container_id">
-                    <img class="avatar_id" src="https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png" alt="">
-                    <p>Nome Utente</p>
+                <div v-for="item in user" :key="item.name" :key="item.immagine" class="container_id">
+                    <img class="avatar_id" :src="item.immagine" alt="">
+                    <p>{{item.nome}}</p>
                 </div>
                 <div class="container_icons">
                     <i class="fas fa-circle-notch"></i>
@@ -51,7 +51,7 @@
 
             <div class="avatar_container">
                 <ul class="avatar_list">
-                    <li v-for="(val, index) in avatarArray" :key="val.nome" :key="val.immagine" @click="statusChange(index)">  
+                    <li v-for="(val, index) in avatarArray" :key="val.nome" :key="val.immagine" @click="indexContatto(index)">  
                         <img class="avatar" :src= "val.immagine" alt="">
                         {{val.nome}}
                     </li>
@@ -64,10 +64,10 @@
         <!-- right container -->
         <div class="container_right">
             <div class="header_right">
-                <div class="container_id" v-for="(val, index) in selected" :key="val.status" v-if="val.status == true">
-                    <img class="avatar_id" :src="val.immagine" alt="">
+                <div class="container_id">
+                    <img class="avatar_id" :src="utenteSelezionato.immagine" alt="">
                     <div class="contact_container">
-                        <p>{{val.nome}}</p>
+                        <p>{{utenteSelezionato.nome}}</p>
                         <p class="access">Ultimo accesso oggi alle</p>
                     </div>
                 </div>
@@ -80,17 +80,19 @@
             <div class="chatbox">
                 
             <!-- messages -->
-            <div v-for="name in selected" :key="name.status" v-if="name.status == true">
-                <div v-for="val in name.message">
-                    <div :key="val.message_sent" key="val.sent" class="message" :class="val.sent" v-if="val.message_sent.length > 0">
-                        <p>{{val.message_sent}}</p>
-                        <p class="time_chat">Inviato alle</p>
-                    </div>
-                    <div :key="val.message_received" :key="val.received" :class="val.received" class="message">
-                        <p>{{val.message_received}}</p>
-                        <p class="time_chat">Inviato alle</p>
-                    </div>
+            <div v-for="(val,index) in utenteSelezionato.message">
+                <div class="message" :class="utenteSelezionato.message[index].sent" v-if="utenteSelezionato.message[index].message_sent.length > 0">
+                    <p>{{utenteSelezionato.message[index].message_sent}}</p>
+                    <p class="time_chat">Inviato alle</p>
                 </div>
+                <div class="message" :class="utenteSelezionato.message[index].received" v-if="utenteSelezionato.message[index].message_received.length > 0">
+                    <p>{{utenteSelezionato.message[index].message_received}}</p>
+                    <p class="time_chat">Inviato alle</p>
+                </div>
+                <!-- <div>
+                    <p>{{utenteSelezionato.user_sent}}</p>
+                    <p class="time_chat">Inviato alle</p>
+                </div> -->
             </div>
 
 
@@ -100,7 +102,8 @@
             </div>
             <div class="chatbar_container">
                 <i class="far fa-smile"></i>
-                <input class="chat" type="text" placeholder="Scrivi un messaggio">
+                <input class="chat" type="text" placeholder="Scrivi un messaggio" v-model="chat"
+                @keyup.enter="sendChat">
                 <i class="fas fa-microphone"></i>
             </div>
         </div>

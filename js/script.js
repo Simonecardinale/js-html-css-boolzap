@@ -1,6 +1,12 @@
 var app = new Vue ({
     el: '#app',
     data: {
+        user:[
+            {
+                nome: "Simone",
+                immagine: "https://cdn.pixabay.com/photo/2013/07/13/10/07/man-156584_960_720.png"
+            }
+        ],
         avatarArray: [
             {
                 nome: 'Michele',
@@ -86,40 +92,34 @@ var app = new Vue ({
                 ],
             },
         ],
-        selected: [
-            {
-                nome: 'Michele',
-                immagine: 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
-                status: true,
-                message:[
-                    {
-                        message_sent: "Ciao a tutti",
-                        message_received: "Ciao a te",
-                        sent: "sent",
-                        received: "received"
-                    },
-                    {
-                        message_sent: "Come stai?",
-                        message_received: "Tutto bene tu?",
-                        sent: "sent",
-                        received: "received"
-                    },
-                    {
-                        message_sent: "Tutto ok!",
-                        message_received: "Ciao!",
-                        sent: "sent",
-                        received: "received"
-                    },
-                ],
-            }
-        ],
+        chat: "",
+        utenteSelezionato: "",
+    },
+
+    created() {
+        this.utenteSelezionato = this.avatarArray[0];
+        console.log(this.utenteSelezionato);
     },
 
     methods: {
-        statusChange(index) {
-            this.avatarArray[index].status = true;
-            this.selected.push(this.avatarArray[index]),
-            this.selected.splice(0, 2, this.avatarArray[index])
+        // statusChange(index) {
+        //     this.avatarArray[index].status = true;
+        //     this.selected.push(this.avatarArray[index]),
+        //     this.selected.splice(0, 2, this.avatarArray[index])
+        // },
+
+        indexContatto(index) {
+            this.utenteSelezionato = this.avatarArray[index];
+            console.log(utenteSelezionato);
         },
+
+        sendChat() {
+            this.selected.forEach((element) => {
+                element.message.forEach((items)=> {
+                    items.user_sent = this.chat;
+                    console.log(element.message);
+                })
+            });
+        }
     }
 });
