@@ -29,7 +29,7 @@ var app = new Vue ({
                         message_sent: "Tutto ok!",
                         message_received: "Ciao!",
                         sent: "sent",
-                        received: "received"
+                        received: "received",
                     },
                 ],
                 
@@ -49,7 +49,8 @@ var app = new Vue ({
                         message_sent: "Domani vado a pescare!",
                         message_received: "Buon per te",
                         sent: "sent",
-                        received: "received"
+                        received: "received",
+                        
                     },
                 ],
             },
@@ -68,7 +69,8 @@ var app = new Vue ({
                         message_sent: "Domani aperitivo?",
                         message_received: "No",
                         sent: "sent",
-                        received: "received"
+                        received: "received",
+                        
                     },
                 ],
             },
@@ -81,24 +83,27 @@ var app = new Vue ({
                         message_sent: "",
                         message_received: "AoE?",
                         sent: "sent",
-                        received: "received"
+                        received: "received",
+                        
                     },
                     {
                         message_sent: "Ti distruggo",
                         message_received: "Si ciao",
                         sent: "sent",
-                        received: "received"
+                        received: "received",
+                        
                     },
-                ],
+                ]
             },
         ],
         chat: "",
-        utenteSelezionato: "",
+        utenteSelezionato: 0,
     },
 
     created() {
         this.utenteSelezionato = this.avatarArray[0];
         console.log(this.utenteSelezionato);
+        
     },
 
     methods: {
@@ -110,16 +115,12 @@ var app = new Vue ({
 
         indexContatto(index) {
             this.utenteSelezionato = this.avatarArray[index];
-            console.log(utenteSelezionato);
+            console.log(this.utenteSelezionato);
         },
 
         sendChat() {
-            this.selected.forEach((element) => {
-                element.message.forEach((items)=> {
-                    items.user_sent = this.chat;
-                    console.log(element.message);
-                })
-            });
+            this.utenteSelezionato.message.push({user_chat: this.chat, user:"sent", message_sent:"", message_received:""});
+            this.chat = "";
         }
     }
 });
