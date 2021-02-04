@@ -80,24 +80,8 @@
             <div class="chatbox">
                 
             <!-- messages -->
-                <div v-for="(val,index) in utenteSelezionato.message">
-                    <div class="message" :class="utenteSelezionato.message[index].sent" v-if="utenteSelezionato.message[index].message_sent.length > 0" >
-                        <p>{{utenteSelezionato.message[index].message_sent}}</p>
-                        <p class="time_chat">Inviato alle</p>
-                    </div>
-                    <div class="message" :class="utenteSelezionato.message[index].received" v-if="utenteSelezionato.message[index].message_received.length > 0">
-                        <p>{{utenteSelezionato.message[index].message_received}}</p>
-                        <p class="time_chat">Inviato alle</p>
-                    </div>
-
-                    <!-- user chat -->
-
-                    <div class="message" :class="utenteSelezionato.message[index].user">
-                        <p>{{utenteSelezionato.message[index].user_chat}}</p>
-                    </div>
-                    <div class="message" :class="utenteSelezionato.message[index].user" v-if="risposta.length > 0 ">
-                        <p>{{utenteSelezionato.message[index].rispostaObj}}</p>
-                    </div>
+                <div v-for="(val,index) in utenteSelezionato.message" :class="(val.status == 'received') ? 'received' : 'sent'" class="message">
+                    <p>{{val.text}}</p>
                 </div>
 
             </div>
@@ -108,7 +92,7 @@
             <div v-for="(val,index) in utenteSelezionato.message" class="chatbar_container">
                 <i class="far fa-smile"></i>
                 <input class="chat" type="text" placeholder="Scrivi un messaggio" v-model="chat"
-                @keyup.enter="sendChat(index)">
+                @keyup.enter="sendChat()">
                 <i class="fas fa-microphone"></i>
             </div>
             

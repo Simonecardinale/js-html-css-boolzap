@@ -14,23 +14,17 @@ var app = new Vue ({
                 status: false,
                 message:[
                     {
-                        message_sent: "Ciao a tutti",
-                        message_received: "Ciao a te",
-                        sent: "sent",
-                        received: "received"
+                        text: "Ciao come stai?",
+                        status: "sent",
                     },
                     {
-                        message_sent: "Come stai?",
-                        message_received: "Tutto bene tu?",
-                        sent: "sent",
-                        received: "received"
+                        text: "Tutto bene tu?",
+                        status: "received",
                     },
                     {
-                        message_sent: "Tutto ok!",
-                        message_received: "Ciao!",
-                        sent: "sent",
-                        received: "received",
-                    },
+                        text: "Tutto ok!",
+                        status: "sent",
+                    }
                 ],
                 
             },
@@ -40,18 +34,17 @@ var app = new Vue ({
                 status: false,
                 message:[
                     {
-                        message_sent: "Ciaone",
-                        message_received: "Ciao!",
-                        sent: "sent",
-                        received: "received"
+                        text: "Domani a pesca?",
+                        status: "sent",
                     },
                     {
-                        message_sent: "Domani vado a pescare!",
-                        message_received: "Buon per te",
-                        sent: "sent",
-                        received: "received",
-                        
+                        text: "No mi secca",
+                        status: "received",
                     },
+                    {
+                        text: "Va bene",
+                        status: "sent",
+                    }
                 ],
             },
             {
@@ -60,17 +53,16 @@ var app = new Vue ({
                 status: false,
                 message:[
                     {
-                        message_sent: "Saluti",
-                        message_received: "Ciao a te",
-                        sent: "sent",
-                        received: "received"
+                        text: "Aperitivo",
+                        status: "sent",
                     },
                     {
-                        message_sent: "Domani aperitivo?",
-                        message_received: "No",
-                        sent: "sent",
-                        received: "received",
-                        
+                        text: "Si dai",
+                        status: "received",
+                    },
+                    {
+                        text: "Andiamo!",
+                        status: "sent",
                     },
                 ],
             },
@@ -79,19 +71,18 @@ var app = new Vue ({
                 immagine: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png",
                 status: false,
                 message:[
-                    {   
-                        message_sent: "",
-                        message_received: "AoE?",
-                        sent: "sent",
-                        received: "received",
-                        
+                    {
+                        text: "AoE?",
+                        status: "sent",
                     },
                     {
-                        message_sent: "Ti distruggo",
-                        message_received: "Si ciao",
-                        sent: "sent",
-                        received: "received",
+                        text: "Ti distruggo",
+                        status: "received",
                     },
+                    {
+                        text: "Si ciao!",
+                        status: "sent",
+                    }
                 ]
             },
         ],
@@ -118,15 +109,16 @@ var app = new Vue ({
             this.utenteSelezionato = this.avatarArray[index];
             console.log(this.utenteSelezionato);
         },
-
+        
         sendChat() {
-            this.utenteSelezionato.message.push({user_chat: this.chat, user:"sent", message_sent:"", message_received:"", rispostaObj: this.risposta});
-            this.chat = "";
-                setTimeout(function(){
-                    this.risposta = "ok"
-                },
-                3000);
-        },
+            this.utenteSelezionato.message.push({text: this.chat, status:"sent"});
+            this.chat =  "";
+                setTimeout(this.sendAnswer, 1000);
+            },
+            sendAnswer(){
+                this.utenteSelezionato.message.push({text:"ok", status: "received"})
+                console.log(this.utenteSelezionato);
+            }
         },
 
     
