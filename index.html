@@ -64,11 +64,11 @@
         <!-- right container -->
         <div class="container_right">
             <div class="header_right">
-                <div class="container_id">
-                    <img class="avatar_id" :src="utenteSelezionato.immagine" alt="">
+                <div class="container_id" v-for="val in user">
+                    <img class="avatar_id" :src="utenteSelezionato.immagine" :key="val.date">
                     <div class="contact_container">
                         <p>{{utenteSelezionato.nome}}</p>
-                        <p class="access">Ultimo accesso oggi alle</p>
+                        <p class="access">Ultimo accesso oggi alle {{indexData}}</p>
                     </div>
                 </div>
                 <div class="container_icons">
@@ -82,6 +82,7 @@
             <!-- messages -->
                 <div v-for="(val,index) in utenteSelezionato.message" :class="(val.status == 'received') ? 'received' : 'sent'" class="message">
                     <p>{{val.text}}</p>
+                    <p class="time_chat">{{val.date}}</p>
                 </div>
 
             </div>
