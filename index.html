@@ -92,8 +92,11 @@
 
                     <!-- user chat -->
 
-                    <div class="message" :class="utenteSelezionato.message[index].user" >
+                    <div class="message" :class="utenteSelezionato.message[index].user">
                         <p>{{utenteSelezionato.message[index].user_chat}}</p>
+                    </div>
+                    <div class="message" :class="utenteSelezionato.message[index].user" v-if="risposta.length > 0 ">
+                        <p>{{utenteSelezionato.message[index].rispostaObj}}</p>
                     </div>
                 </div>
 

@@ -91,13 +91,13 @@ var app = new Vue ({
                         message_received: "Si ciao",
                         sent: "sent",
                         received: "received",
-                        
                     },
                 ]
             },
         ],
         chat: "",
         utenteSelezionato: 0,
+        risposta: "",
     },
 
     created() {
@@ -105,6 +105,7 @@ var app = new Vue ({
         console.log(this.utenteSelezionato);
         
     },
+
 
     methods: {
         // statusChange(index) {
@@ -119,8 +120,14 @@ var app = new Vue ({
         },
 
         sendChat() {
-            this.utenteSelezionato.message.push({user_chat: this.chat, user:"sent", message_sent:"", message_received:""});
+            this.utenteSelezionato.message.push({user_chat: this.chat, user:"sent", message_sent:"", message_received:"", rispostaObj: this.risposta});
             this.chat = "";
-        }
-    }
+                setTimeout(function(){
+                    this.risposta = "ok"
+                },
+                3000);
+        },
+        },
+
+    
 });
