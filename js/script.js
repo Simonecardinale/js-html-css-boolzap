@@ -108,11 +108,13 @@ var app = new Vue ({
         chat: "",
         utenteSelezionato: 0,
         indexData: "",
+        RTAccess: moment().calendar(),
     },
 
     created() {
         this.utenteSelezionato = this.avatarArray[0];
         this.indexData = this.utenteSelezionato.message[0].date;
+        
     },
 
 
@@ -125,22 +127,21 @@ var app = new Vue ({
 
         indexContatto(index) {
             this.utenteSelezionato = this.avatarArray[index];
-
-            for(var k in this.utenteSelezionato.message) {
-                if(this.utenteSelezionato.message[k].status == "received") {
-                    this.indexData = this.utenteSelezionato.message[k].date;
-                }
-            }
             console.log(this.indexData);
         },
         
         sendChat() {
-            this.utenteSelezionato.message.push({text: this.chat, status:"sent"});
+            this.utenteSelezionato.message.push({text: this.chat, status:"sent", date: this.RTAccess});
             this.chat =  "";
                 setTimeout(this.sendAnswer, 1000);
             },
             sendAnswer(){
-                this.utenteSelezionato.message.push({text:"ok", status: "received"})
+                this.utenteSelezionato.message.push({text:"ok", status: "received",  date: this.RTAccess});
+                for(var k in this.utenteSelezionato.message) {
+                    if(this.utenteSelezionato.message[k].status == "received") {
+                        this.indexData = this.utenteSelezionato.message[k].date;
+                    }
+                }
             },
         },
 
