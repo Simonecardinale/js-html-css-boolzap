@@ -44,7 +44,7 @@
             <div class="search_container">
                 <label for="">
                     <i class="fas fa-search"></i>
-                    <input class="search" type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input class="search" type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyup="researchContact()">
                 </label>
             </div>    
             <!-- /notifies and search -->
@@ -52,7 +52,7 @@
 
             <div class="avatar_container">
                 <ul class="avatar_list">
-                    <li v-for="(val, index) in avatarArray" :key="val.nome" :key="val.immagine" @click="indexContatto(index)">  
+                    <li v-for="(val, index) in avatarArray" :key="val.nome" :key="val.immagine" :key="val.visible" @click="indexContatto(index)" v-if="val.visible == true">  
                         <img class="avatar" :src= "val.immagine" alt="">
                         {{val.nome}}
                     </li>

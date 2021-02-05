@@ -12,7 +12,7 @@ var app = new Vue ({
             {
                 nome: 'Michele',
                 immagine: 'https://cdn.pixabay.com/photo/2014/04/03/10/32/businessman-310819_960_720.png',
-                
+                visible: true,
                 message:[
                     {
                         text: "Ciao come stai?",
@@ -36,7 +36,7 @@ var app = new Vue ({
             {
                 nome: 'Federica',
                 immagine: "https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807__340.png",
-                
+                visible: true,
                 message:[
                     {
                         text: "Domani a pesca?",
@@ -58,7 +58,7 @@ var app = new Vue ({
             {
                 nome: 'Nino',
                 immagine: "https://cdn.pixabay.com/photo/2016/04/01/11/25/avatar-1300331__340.png",
-                
+                visible: true,
                 message:[
                     {
                         text: "Aperitivo",
@@ -80,7 +80,7 @@ var app = new Vue ({
             {
                 nome: 'Peppe',
                 immagine: "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png",
-                
+                visible: true,
                 message:[
                     {
                         text: "AoE?",
@@ -109,6 +109,8 @@ var app = new Vue ({
         utenteSelezionato: 0,
         indexData: "",
         RTAccess: moment().calendar(),
+        search:"",
+        filtrato: "",
     },
 
     created() {
@@ -143,7 +145,19 @@ var app = new Vue ({
                     }
                 }
             },
+            researchContact() {
+                this.avatarArray.forEach((element)=> {
+                        this.filtrato = element.nome.substring(0, element.nome.length);
+                        if(this.filtrato.includes(this.search) == true){
+                            element.visible = true;
+                            // console.log(element.visible);
+                        } else {
+                            element.visible = false;
+                        }
+                });
+            }
         },
+
 
     
 });
