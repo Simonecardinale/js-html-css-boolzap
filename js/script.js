@@ -111,6 +111,10 @@ var app = new Vue ({
         RTAccess: moment().calendar(),
         search:"",
         filtrato: "",
+        messaggioSelezionato: 0,
+        showHide: false,
+        getVisible:"",
+        getInvisible: "",
     },
 
     created() {
@@ -155,6 +159,26 @@ var app = new Vue ({
                             element.visible = false;
                         }
                 });
+            },
+
+            indexMessaggio(index) {
+                this.messaggioSelezionato = this.utenteSelezionato.message[index];
+                this.getVisible = "visible"
+            },
+
+            switchButton() {
+                if(this.showHide == false) {
+                    this.showHide = true;
+                    this.getVisible = "visible"
+                } else {
+                    this.showHide = false;
+                    this.getVisible = "";
+                }
+            },
+
+            deleteMessage() {
+                console.log(this.messaggioSelezionato);
+                this.messaggioSelezionato.text = "";
             }
         },
 

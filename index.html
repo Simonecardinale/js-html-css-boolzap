@@ -81,9 +81,14 @@
             <div class="chatbox">
                 
             <!-- messages -->
-                <div v-for="(val,index) in utenteSelezionato.message" :class="(val.status == 'received') ? 'received' : 'sent'" class="message">
+                <div v-for="(val,index) in utenteSelezionato.message" :class="(val.status == 'received') ? 'received' : 'sent'" class="message" v-if="val.text !== ''">
+                    <div>
+                    <i class="fas fa-angle-down" @click="indexMessaggio(index); switchButton()"></i>
                     <p>{{val.text}}</p>
                     <p class="time_chat">{{val.date}}</p>
+                    <div v-if="messaggioSelezionato == utenteSelezionato.message[index]" class="delete_menu" :class="getVisible">
+                        <p @click="deleteMessage()">Cancella messaggio</p>
+                    </div>
                 </div>
 
             </div>
